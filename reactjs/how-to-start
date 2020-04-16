@@ -1,0 +1,8 @@
+#With npx
+* command : npx create-react-app <project_name>
+* To run : npm start (in the project dir)
+
+#With npm
+* command : npm install create-react-app -g (-g globally)
+* command : create-react-app <project_name> 
+* To run : npm start (in the project dir)
