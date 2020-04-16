@@ -1,1 +1,30 @@
+Components
+--------------------
+* HEADER	
+* SIDENAV 
+* MAIN CONTENT	
+* FOOTER
+
+Component in Code
+--------------------
+-> Component are placed in a javascript file
+for ex: App component is placed in app.js 
+
+Component Types 
+--------------------
+* Stateless Functional Component
+	-> Javascript function
+	-> Return HTML that describe the UI
+	-> Ex: function welcome(props) {
+		   	return <h1> Hello, {props.name} </h1>;
+	}
+* Stateful Class Component
+	-> Regular es6 class
+	-> Render method returning HTML
+	-> Ex: class welcome extends React.Component{
+	  	   	 render() {
+		   		return <h1> Hello, {this.props.name} </h1>;
+		   	 	}
+		   	 }
+
 
