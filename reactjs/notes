@@ -34,7 +34,7 @@ ex:
 -> create a new file under src and name it greet.js (any name)
 import React from "react"
 //first functional components 
-function Greet() {
+function Greet() {  
     return <h1>Hello Nishant</h1>
 }
 export default Greet;
@@ -52,3 +52,39 @@ import Greet from './components/greet';
  -> es6 arrow function syntax:
 	const Greet = () => <h1>Hello World!</h1>
 	export default Greet;
+
+Class Component
+-------------------------
+Receive properties(props) as input -> ES6 class (state) -> HTML(JSX)
+ex:
+import React, {Component} from "react"
+class Greet extents Component {
+	render(){                      // render method that return null or html 
+		return <h1> hello world </h1>
+	}
+}
+export default Greet;
+
+Functional vs Class Components
+-------------------------------
+Functional
+* Simple Function
+* Use Func componets as much as possible
+* Absence of 'this' keyword
+* Solution without using state
+* Mainly responsible for the UI
+
+Class
+* More feature rich
+* Maintain their own private data - state
+* Complex UI logic
+* Provide lifecycle hooks
+
+JSX
+-------------
+-> JavaScript XML (JSX) - Extension to the JavaScript language syntax.
+-> Write XML-like code for elements and components.
+-> JSX is not a necessity to write React application.
+-> JSX just makes code simpler and elegant.
+-> JSX ultimately transpiles to pure 
+-> JavaScript which is understood by the browser.
