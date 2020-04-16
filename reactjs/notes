@@ -27,4 +27,28 @@ Component Types
 		   	 	}
 		   	 }
 
-
+Functional Components Breif
+------------------------------
+It accept an input of Properties -> Javascript function -> Return HTML (JSX)
+ex: 
+-> create a new file under src and name it greet.js (any name)
+import React from "react"
+//first functional components 
+function Greet() {
+    return <h1>Hello Nishant</h1>
+}
+export default Greet;
+->then in App.js delete all the html components and first 
+import Greet from './components/greet';
+-> then under below return under function  
+ return (
+    <div className="App">
+      <Greet/> 
+    </div>
+  );
+###################################################################
+ NOTE: But the best way is to define is to use es6 arrow function 
+###################################################################
+ -> es6 arrow function syntax:
+	const Greet = () => <h1>Hello World!</h1>
+	export default Greet;
