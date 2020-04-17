@@ -419,3 +419,63 @@ class FunctionClick extends Component{
     )
     }
 }
+
+3 method)
+// most use approch beacuse in this case, binding happpens once in the 
+constructor
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler}>Click</button>
+        </div>
+    )
+    }
+}
+
+
+
+
+4 method) 
+// arrow function as a class property
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler = () =>{
+        this.setState({
+            message:'hi there'
+        })
+    }
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler}>Click</button>
+        </div>
+    )
+    }
+}
