@@ -199,8 +199,18 @@ class jsxuses extends Components{
 		{this.props.children}
 	)
 }
-
-
+we can also used props in some more ways:-
+class jsxuses extends Component{
+	render() {
+	const {name} = this.props 
+	return(
+	<div>
+		<h1> Hello {name} </h1>
+		{this.props.children}
+    </div>
+	)
+}
+}
 props vs state
 ---------------
 props
@@ -240,12 +250,41 @@ class StateUses extends Component{
         return (
             <div>
                 <h1>{this.state.message}</h1>
-                <button onClick = {() =>              this.changeMessage()}>Subscribe</button>    
+                <button onClick = {() => this.changeMessage()}>Subscribe</button>    
             </div>
         )   
     }
 }
 
+2)
+import React, { Component } from 'react'
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState(prevState => ({
+            message: "hello hii"
+        }))
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {() => this.eventHandler()}>Click</button>
+        </div>
+    )
+    }
+}
+
+export default FunctionClick
 
 
 react snippets-
@@ -284,3 +323,99 @@ class Counter extends Component {
 ###################################################################################################
 NOTE: When I have to update the state based on previous state (for ex: in the above code there is count:0 state which is a previous state beacuse I have to based on it, as to increment with it from count : 0 to count: 1 and so on... and the new value is store on it) that why it is better to use a function as I mention above   
 ###################################################################################################
+
+Event Handling
+---------------
+When the user interact with application, events are fired.
+ex: mouse clicks, mouse over, etc
+
+ex of event:
+//event in function
+
+function FunctionClick() {
+    function eventHandler() {
+        alert("Hey there");
+    }
+    return (
+    <button onClick = {eventHandler}>Click</button> //in js <button onclick = "eventHandler">
+    );
+}
+
+//event in class
+class FunctionClick extends Component{
+  clickHandler() {
+        alert("hello");
+    }
+
+    render(){
+    return (
+        <div>
+            <button onClick ={this.clickHandler}>Click</button>
+        </div>
+    )
+    }
+}
+
+
+Binding Event Handlers
+-----------------------
+
+1 method) 
+//Binding in the render method
+import React, { Component } from 'react'
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler.bind(this)}>Click</button>
+        </div>
+    )
+    }
+}
+
+export default FunctionClick
+
+
+2 method)
+// I mention above arrow function code but still I mention again lol
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {() => this.eventHandler()}>Click</button>
+        </div>
+    )
+    }
+}
