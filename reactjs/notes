@@ -125,3 +125,106 @@ for   -> htmlFor
 * camelCase property naming convention
 * onclick  -> onClick
 * tabindex -> tabIndex
+
+Props (Properties)
+--------------------
+-> It is a optional input that a component can accept.
+-> It also allow the component to be dynamic.
+
+ex: 
+In App.js
+----------
+<div className="App">
+	<Jsxuses name ="Nishant">
+	<Jsxuses name ="Vimal">
+	<Jsxuses name ="Gaurav">
+</div>
+In jsxUses.js
+--------------
+const jsxuses = (props) => {
+	return (<h1> Hello {props.name});
+}
+
+From the above example it simple return hello and the respected string in each case now lets talk about 
+there child components:-
+ex: 
+In function component:-
+-----------------------
+<div className="App">
+	<Jsxuses name ="Nishant"><h2>I am your child</h2></Jsxuses>
+    <Jsxuses name ="Vimal"><h3>I am your child </h3></Jsxuses>
+    <Jsxuses name ="Gaurav"><h4>I am your child </h4></Jsxuses>
+</div>
+
+ex:-
+const jsxuses = (props) => {
+return (
+<div>							// for accessing child component, div tag is used 
+	<h1> Hello {props.name}); 
+	{props.children}            // child comp
+</div>
+}
+
+In class:-
+----------
+In class just props.name and props.children is converted into this.props.name and this.props.children
+class jsxuses extends Components{
+	return(
+	<div>
+		<h1> Hello {this.props.name});
+		{this.props.children}
+	)
+}
+
+
+props vs state
+---------------
+props
+
+* props get passed to component
+* Function parameters
+* props are immutable
+* props - Functional Components
+  this.props - Class Components
+
+state
+
+* state is managed within the component
+* Variable declared in the function body
+* state can be changed
+* useState Hook - Functional Components
+  this.state - Class components
+
+state :
+---------
+state is an object that is privately maintained inside a component and a state can influence what to 
+render on  the browser
+ex:
+class StateUses extends Component{
+    constructor(){
+        super()
+        this.state = {                                      
+            message:"Please Subscribe"
+        }
+    }
+    changeMessage() {							
+        this.setState( {						//to change the the state of a component
+            message:"Thanks for subscribing"
+        } )
+    }
+    render(){
+        return (
+            <div>
+                <h1>{this.state.message}</h1>
+                <button onClick = {() =>              this.changeMessage()}>Subscribe</button>    
+            </div>
+        )   
+    }
+}
+
+
+
+react snippets-
+-----------------
+rce - to create a class component
+rconst - to create constructor and super
