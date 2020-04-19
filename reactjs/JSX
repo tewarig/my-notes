@@ -1,0 +1,46 @@
+JSX
+------
+-> JavaScript XML (JSX) - Extension to the JavaScript language syntax.
+-> Write XML-like code for elements and components.
+-> JSX is not a necessity to write React application.
+-> JSX just makes code simpler and elegant.
+-> JSX ultimately transpiles to pure 
+-> JavaScript which is understood by the browser.
+
+
+##########################################
+Note: React Element should be PascalCased
+ex: AnyNum, Anyval , Mainui etc
+##########################################
+
+ex:
+With JSX:
+const jsxuses = () => {
+    return (
+        <div>     
+            <h1> Hey there!</h1>
+        </div>
+    );
+}
+
+export default jsxuses;
+
+Without JSX:
+-----------------
+const jsxuses () => {
+	return React.createElement(
+		'div',
+		{className:'nclass',id:'nid'},
+		React.createElement('h1','null','hello world!')
+	);
+}
+
+JSX difference
+-------------------
+class -> className
+for   -> htmlFor
+* camelCase property naming convention
+* onclick  -> onClick
+* tabindex -> tabIndex
+
+
