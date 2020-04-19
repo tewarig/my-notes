@@ -1,0 +1,155 @@
+Event Handling
+--------------------
+When the user interact with application, events are fired.
+ex: mouse clicks, mouse over, etc
+
+ex of event:
+//event in function
+
+function FunctionClick() {
+    function eventHandler() {
+        alert("Hey there");
+    }
+    return (
+    <button onClick = {eventHandler}>Click</button> //in js <button onclick = "eventHandler">
+    );
+}
+
+//event in class
+class FunctionClick extends Component{
+  clickHandler() {
+        alert("hello");
+    }
+
+    render(){
+    return (
+        <div>
+            <button onClick ={this.clickHandler}>Click</button>
+        </div>
+    )
+    }
+}
+
+
+Binding Event Handlers
+--------------------------------
+
+1 method) 
+//Binding in the render method
+import React, { Component } from 'react'
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler.bind(this)}>Click</button>
+        </div>
+    )
+    }
+}
+
+export default FunctionClick
+
+
+2 method)
+// I mention above arrow function code but still I mention again lol
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {() => this.eventHandler()}>Click</button>
+        </div>
+    )
+    }
+}
+
+3 method)
+// most use approch beacuse in this case, binding happpens once in the 
+constructor
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+    }
+    
+    eventHandler() {
+        this.setState({
+            message: "hello hii"
+        })
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler}>Click</button>
+        </div>
+    )
+    }
+}
+
+
+
+
+4 method) 
+// arrow function as a class property
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler = () =>{
+        this.setState({
+            message:'hi there'
+        })
+    }
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {this.eventHandler}>Click</button>
+        </div>
+    )
+    }
+}
