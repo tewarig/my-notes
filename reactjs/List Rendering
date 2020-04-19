@@ -1,0 +1,84 @@
+List Rendering
+-------------------
+ex:
+with func:
+ex 1)
+function List() {
+    const listName = [1,2,3]
+    const newList = listName.map(x => x*2)
+
+    return (
+        <div>
+            <h2>Before: {listName[0]} , {listName[1]} , {listName[2]}</h2>
+            <h2>After * 2: {newList[0]} , {newList[1]} , {newList[2]} </h2>
+        </div>             
+        
+    )
+}
+
+ex 2)
+//better example than ex 1 with function
+function List() {
+    const listName = [1,2,3]
+    const listJoin = listName.join(',')
+    const newList = listName.map(x => x*2)
+    const newListJoin = newList.join(',')
+
+    return (
+        <div>
+            <h2> Before: {listJoin}</h2>
+            <h2> After: {newListJoin} </h2>
+        </div>
+        )      
+}
+
+ex 3)
+//same as ex 2 but this time I am using class
+class List extends Component{
+    constructor(){
+    super()
+    this.listName = [1,2,3]
+    this.joinListName = this.listName.join(',')
+    this.newListName = this.listName.map(x=> x*2)
+    this.joinNewList = this.newListName.join(',') 
+    }
+    render(){
+        return(
+            <div>
+                <h2>Before: {this.joinListName} </h2>
+                <h2>After: {this.joinNewList} </h2>
+            </div>
+            )
+    }
+}
+
+ex 4) 
+//this time with arrays 
+function NameList() {
+    const info = [
+        {
+            id:1,
+            name:'nishant',
+            age:18,
+            skill:'noob in everthing'
+        },
+        {
+            id:2,
+            name:'mayank',
+            age:18,
+            skill: 'python king'
+        },
+        {
+            id:3,
+            name:'kartik',
+            age:18,
+            skill: 'python hero'
+        }
+    ]
+const infoList = info.map(singleinfo=> <h1>{singleinfo.id} | {singleinfo.name} | {singleinfo.age} | {singleinfo.skill}</h1>) 
+    return (
+        <div>
+            <h1>{infoList}</h1>
+        </div>
+    )
+}
