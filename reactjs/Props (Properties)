@@ -1,0 +1,84 @@
+Props (Properties)
+------------------------
+-> It is a optional input that a component can accept.
+-> It also allow the component to be dynamic.
+
+ex: 
+In App.js
+<div className="App">
+	<Jsxuses name ="Nishant">
+	<Jsxuses name ="Vimal">
+	<Jsxuses name ="Gaurav">
+</div>
+
+In jsxUses.js
+const jsxuses = (props) => {
+	return (<h1> Hello {props.name});
+}
+
+From the above example it simple return hello and the respected string in each case now lets talk about 
+there child components:-
+ex: 
+In function component:-
+-------------------------------
+<div className="App">
+	<Jsxuses name ="Nishant"><h2>I am your child</h2></Jsxuses>
+    <Jsxuses name ="Vimal"><h3>I am your child </h3></Jsxuses>
+    <Jsxuses name ="Gaurav"><h4>I am your child </h4></Jsxuses>
+</div>
+
+ex:-
+const jsxuses = (props) => {
+return (
+<div>							// for accessing child component, div tag is used 
+	<h1> Hello {props.name}); 
+	{props.children}            // child comp
+</div>
+}
+
+we can also used props in some more ways:-
+1)
+const jsxuses = ({name,children}) => {
+    //console.log(props)
+    return (
+    <div>
+        <h1> Hey {name}</h1>
+        {children}
+    </div>
+    )
+}
+
+2) 
+const jsxuses = (props) => {
+    const {name,children} = props
+    //console.log(props)
+    return (
+    <div>
+        <h1> Hey {name}</h1>
+        {children}
+    </div>
+    )
+}
+
+In class:-
+------------
+In class just props.name and props.children is converted into this.props.name and this.props.children
+class jsxuses extends Components{
+	return(
+	<div>
+		<h1> Hello {this.props.name});
+		{this.props.children}
+	)
+}
+we can also used props in some more ways:-
+class jsxuses extends Component{
+	render() {
+	const {name} = this.props 
+	return(
+	<div>
+		<h1> Hello {name} </h1>
+		{this.props.children}
+    </div>
+	)
+}
+}
