@@ -1,0 +1,94 @@
+state :
+---------
+state is an object that is privately maintained inside a component and a state can influence what to 
+render on  the browser
+ex:
+class StateUses extends Component{
+    constructor(){
+        super()
+        this.state = {                                      
+            message:"Please Subscribe"
+        }
+    }
+    changeMessage() {							
+        this.setState( {						//to change the the state of a component
+            message:"Thanks for subscribing"
+        } )
+    }
+    render(){
+        return (
+            <div>
+                <h1>{this.state.message}</h1>
+                <button onClick = {() => this.changeMessage()}>Subscribe</button>    
+            </div>
+        )   
+    }
+}
+
+2)
+import React, { Component } from 'react'
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"hello world"
+        }
+    }
+    
+    eventHandler() {
+        this.setState(prevState => ({
+            message: "hello hii"
+        }))
+    }
+
+    render() {
+    return (
+        <div>    
+            {this.state.message}
+            <button onClick = {() => this.eventHandler()}>Click</button>
+        </div>
+    )
+    }
+}
+
+export default FunctionClick
+
+####################################
+react snippets-
+-------------------
+rce - to create a class component
+rconst - to create constructor and super
+#####################################
+one more example: 
+#important example
+class Counter extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             count:0
+            
+        }
+    }
+    changeCount() {
+        this.setState(prevState => ({       //always use a function ex: prevState instead of using  
+            count:prevState.count+1 		//this.create.count+1
+        }))
+    }
+
+    render() {
+        return (
+            <div>
+                Count = {this.state.count}
+                <button onClick = {() => this.changeCount()}> Click Me</button> 
+            </div>
+        )
+    }
+}
+
+
+###################################################################################################
+NOTE: When I have to update the state based on previous state (for ex: in the above code there is count:0 state which is a previous state because I have to based on it, as to increment with it from count : 0 to count: 1 and so on... and the new value is store on it) that why it is better to use a function as I mention above   
+###################################################################################################
