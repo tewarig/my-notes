@@ -1,0 +1,87 @@
+Conditional Rendering
+------------------------------
+1) if/else
+2) Element variables
+3) Conditional Ternary operator
+4) Short circuit operator
+
+
+1) if/else approach
+ex: 
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true			 //ifValue:false, then it print Welcome Guest
+        }
+    }
+    render() {
+        if(this.state.isValue) {
+            return <div>Welcome Nishant</div>
+        }
+        else{
+            return <div>Welcome Guest </div>
+        }
+       
+    }
+
+    2) Element variable approach
+    ex:
+    class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:false
+        }
+    }
+    render() {
+        let message
+        if(this.state.isValue) {
+            message= <div>Welcome Nishant</div>
+        }
+        else{
+            message = <div>Welcome Guest </div>
+        }
+        return <div>{message}</div>
+    }
+    
+}
+
+
+3) Conditional Ternary operator approach
+ex: 
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true
+        }
+    }
+    render() {
+        let message
+        return (
+            this.state.isValue ? 
+            <div>Welcome Nishant </div> :
+            <div>Welcome Guest</div>
+        )
+    }
+    
+}
+
+4) Short circuit operator
+ex:
+
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true          
+        }
+    }
+    render() {
+    
+        return this.state.isValue && <div>Welcome Nishant</div> 
+     
+    }
+    
+}
