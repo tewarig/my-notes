@@ -479,3 +479,241 @@ class FunctionClick extends Component{
     )
     }
 }
+
+
+
+Method as Props 
+----------------
+To undestand the method as props lets create two files
+-> Parentcomponent.js
+-> Childcomponent.js
+
+In Parent Component 
+
+import ChildComponent from './ChildComponent'             //dont forget to import childcomp 
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"Parent world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+
+    }
+    eventHandler(){
+        console.log(`Hey ${this.state.message}`) //`${this.state.message}` is a template literals
+        alert(`Hey ${this.state.message}`)
+    }
+    
+    render() {
+    return (
+        <div>    
+            <ChildComponent name={this.eventHandler}></ChildComponent>
+        </div>
+    )
+    }
+}
+
+Now in ChildComponent.js
+
+function ChildComponent(props) {
+    return (
+        <div>
+        
+        <button onClick = {props.name}>Greet Parent</button>  
+         
+        </div>
+    )
+
+    }
+##########################################################################   
+NOTE: arrow function syntax is the best to passed the parameters from the child component to the parent component
+##########################################################################
+
+Same both code from above but now this time some more stuff
+
+In Parent Component 
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"Parent world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+
+    }
+    eventHandler(value1,value2){
+        console.log(`Hey there ${this.state.message}  ${value1} and ${value2}`) //`${this.state.message}` is a template literals
+        alert(`Hey there ${this.state.message}  ${value1} and ${value2} `)
+    }
+    
+    render() {
+    return (
+        <div>    
+            <ChildComponent name={this.eventHandler}></ChildComponent>
+        </div>
+    )
+    }
+}
+
+In Children Component
+
+function ChildComponent(props) {
+    return (
+        <div>
+        
+        <button onClick = {() => props.name('I am first child comp','I am second child comp')}>Greet Parent</button>  
+         
+        </div>
+    )
+
+    }
+
+
+Conditional Rendering
+
+1) if/else
+2) Element variables
+3) Conditional Ternary operator
+4) Short circuit operator
+
+
+1) if/else approach
+ex: 
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true			 //ifValue:false, then it print Welcome Guest
+        }
+    }
+    render() {
+        if(this.state.isValue) {
+            return <div>Welcome Nishant</div>
+        }
+        else{
+            return <div>Welcome Guest </div>
+        }
+       
+    }
+
+    2) Element variable approach
+    ex:
+    class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:false
+        }
+    }
+    render() {
+        let message
+        if(this.state.isValue) {
+            message= <div>Welcome Nishant</div>
+        }
+        else{
+            message = <div>Welcome Guest </div>
+        }
+        return <div>{message}</div>
+    }
+    
+}
+
+
+3) Conditional Ternary operator approach
+ex: 
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true
+        }
+    }
+    render() {
+        let message
+        return (
+            this.state.isValue ? 
+            <div>Welcome Nishant </div> :
+            <div>Welcome Guest</div>
+        )
+    }
+    
+}
+
+4) Short circuit operator
+ex:
+
+class UserGreeting extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isValue:true          
+        }
+    }
+    render() {
+    
+        return this.state.isValue && <div>Welcome Nishant</div> 
+     
+    }
+    
+}
+
+
+List Rendering
+---------------
+ex:
+with func:
+ex 1)
+function List() {
+    const listName = [1,2,3]
+    const newList = listName.map(x => x*2)
+
+    return (
+        <div>
+            <h2>Before: {listName[0]} , {listName[1]} , {listName[2]}</h2>
+            <h2>After * 2: {newList[0]} , {newList[1]} , {newList[2]} </h2>
+        </div>             
+        
+    )
+}
+
+ex 2)
+//better example than ex 1 with function
+function List() {
+    const listName = [1,2,3]
+    const listJoin = listName.join(',')
+    const newList = listName.map(x => x*2)
+    const newListJoin = newList.join(',')
+
+    return (
+        <div>
+            <h2> Before: {listJoin}</h2>
+            <h2> After: {newListJoin} </h2>
+        </div>
+        )      
+}
+
+ex 3)
+//same as ex 2 but this time I am using class
+class List extends Component{
+    constructor(){
+    super()
+    this.listName = [1,2,3]
+    this.joinListName = this.listName.join(',')
+    this.newListName = this.listName.map(x=> x*2)
+    this.joinNewList = this.newListName.join(',') 
+    }
+    render(){
+        return(
+            <div>
+                <h2>Before: {this.joinListName} </h2>
+                <h2>After: {this.joinNewList} </h2>
+            </div>
+            )
+    }
+}
+
