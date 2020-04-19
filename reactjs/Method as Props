@@ -1,0 +1,91 @@
+Method as Props 
+------------------------
+To undestand the method as props lets create two files
+-> Parentcomponent.js
+-> Childcomponent.js
+
+In Parent Component 
+
+import ChildComponent from './ChildComponent'             //dont forget to import childcomp 
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"Parent world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+
+    }
+    eventHandler(){
+        console.log(`Hey ${this.state.message}`) //`${this.state.message}` is a template literals
+        alert(`Hey ${this.state.message}`)
+    }
+    
+    render() {
+    return (
+        <div>    
+            <ChildComponent name={this.eventHandler}></ChildComponent>
+        </div>
+    )
+    }
+}
+
+Now in ChildComponent.js
+
+function ChildComponent(props) {
+    return (
+        <div>
+        
+        <button onClick = {props.name}>Greet Parent</button>  
+         
+        </div>
+    )
+
+    }
+##########################################################################   
+NOTE: arrow function syntax is the best to passed the parameters from the child component to the parent component
+##########################################################################
+
+Same both code from above but now this time some more stuff
+
+In Parent Component 
+
+class FunctionClick extends Component{
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            message:"Parent world"
+        }
+        this.eventHandler = this.eventHandler.bind(this)
+
+    }
+    eventHandler(value1,value2){
+        console.log(`Hey there ${this.state.message}  ${value1} and ${value2}`) //`${this.state.message}` is a template literals
+        alert(`Hey there ${this.state.message}  ${value1} and ${value2} `)
+    }
+    
+    render() {
+    return (
+        <div>    
+            <ChildComponent name={this.eventHandler}></ChildComponent>
+        </div>
+    )
+    }
+}
+
+In Children Component
+
+function ChildComponent(props) {
+    return (
+        <div>
+        
+        <button onClick = {() => props.name('I am first child comp','I am second child comp')}>Greet Parent</button>  
+         
+        </div>
+    )
+
+    }
+
