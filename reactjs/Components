@@ -1,0 +1,83 @@
+Components
+--------------------
+* HEADER	
+* SIDENAV 
+* MAIN CONTENT	
+* FOOTER
+
+Component in Code
+---------------------------
+-> Component are placed in a javascript file
+for ex: App component is placed in app.js 
+
+Component Types 
+------------------------
+* Stateless Functional Component
+	-> Javascript function
+	-> Return HTML that describe the UI
+	-> Ex: function welcome(props) {
+		   	return <h1> Hello, {props.name} </h1>;
+	}
+* Stateful Class Component
+	-> Regular es6 class
+	-> Render method returning HTML
+	-> Ex: class welcome extends React.Component{
+	  	   	 render() {
+		   		return <h1> Hello, {this.props.name} </h1>;
+		   	 	}
+		   	 }
+		
+		
+		
+Functional Components Brief
+---------------------------------------
+It accept an input of Properties -> Javascript function -> Return HTML (JSX)
+ex: 
+-> create a new file under src and name it greet.js (any name)
+import React from "react"
+//first functional components 
+function Greet() {  
+    return <h1>Hello Nishant</h1>
+}
+export default Greet;
+->then in App.js delete all the html components and first 
+import Greet from './components/greet';
+-> then under below return under function  
+ return (
+    <div className="App">
+      <Greet/> 
+    </div>
+  );
+###################################################################
+ NOTE: But the best way is to define is to use es6 arrow function 
+###################################################################
+ -> es6 arrow function syntax:
+	const Greet = () => <h1>Hello World!</h1>
+	export default Greet;
+
+Class Component
+------------------------
+Receive properties(props) as input -> ES6 class (state) -> HTML(JSX)
+ex:
+import React, {Component} from "react"
+class Greet extents Component {
+	render(){                      // render method that return null or html 
+		return <h1> hello world </h1>
+	}
+}
+export default Greet;
+
+Functional vs Class Components
+-------------------------------------------
+Functional
+* Simple Function
+* Use Func components as much as possible
+* Absence of 'this' keyword
+* Solution without using state
+* Mainly responsible for the UI
+
+Class
+* More feature rich
+* Maintain their own private data - state
+* Complex UI logic
+* Provide lifecycle hooks
